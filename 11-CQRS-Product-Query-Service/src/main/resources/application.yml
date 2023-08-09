@@ -1,0 +1,55 @@
+#SERVER PROPERTIES
+server:
+  port: 8082
+  
+#DATASOURCE PROPERTIES  
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/cqrs_db
+    username: root
+    password: root
+    
+#JPA PROPERTIES    
+  jpa:
+    show-sql: true
+    properties:
+      hibernate:
+       format_sql=true
+    hibernate:
+      ddl-auto: update
+    database-platform: org.hibernate.dialect.MySQLDialect
+    
+#KAFKA PROPERTIES    
+  kafka:
+    consumer:
+      bootstrap-servers: localhost:9092
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      properties:
+        spring:
+         json:
+          trusted:
+           packages: "*"
+        
+        
+#ACTUATOR PROPERTIES
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: always
+      
+#OPEN-API(SWAGGER) PROPERTIES      
+springdoc:
+  api-docs:
+    path: /api-doc      
+      
+#LOG4J PROPERTIES      
+logging:
+  file:
+    name: F:/LogFiles/product-query-service.log      
+      
