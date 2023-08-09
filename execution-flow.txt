@@ -1,0 +1,104 @@
+Execution Steps:
+================
+1. Start the Zookeeper & Kafka Servers
+
+     C:\kafka>.\bin\windows\zookeeper-server-start.bat config\zookeeper.properties	
+
+     C:\kafka>.\bin\windows\kafka-server-start.bat config\server.properties
+
+2. Start the Product-Query-Service
+
+3. Start the Product-Command-Service
+
+4. Test the Services using POSTMAN TOOL.
+
+***************Product-Command-Service*******************
+		  CREATE-PRODUCT
+*********************************************************
+__________________________________________________________
+POST	http://localhost:8081/api/products	SEND				
+__________________________________________________________
+
+{
+    "eventType" : "CreateProduct",
+    "product" : {
+        "productName" : "Laptop",
+        "productPrice" : 59000.00,
+        "productDescription" : "Lenovo Laptop"
+    }
+}
+__________________________________________________________
+{
+    "productId": 1,
+    "productName": "Laptop",
+    "productPrice": 59000.0,
+    "productDescription": "Lenovo Laptop"
+}
+__________________________________________________________
+
+
+*********************************************************
+		  UPDATE-PRODUCT
+*********************************************************
+__________________________________________________________
+POST	http://localhost:8081/api/products/1	SEND				
+__________________________________________________________
+
+{
+    "eventType" : "UpdateProduct",
+     "product" : {
+        "productName" : "Laptop-Lenovo",
+        "productPrice" : 59000.00,
+        "productDescription" : "Lenovo Laptop IdeaPad"
+    }
+}
+__________________________________________________________
+{
+    "productId": 1,
+    "productName": "Laptop-Lenovo",
+    "productPrice": 59000.0,
+    "productDescription": "Lenovo Laptop IdeaPad"
+}
+__________________________________________________________
+
+*********************************************************
+		  DELETE-PRODUCT
+*********************************************************
+__________________________________________________________
+DELETE	http://localhost:8081/api/products/1	SEND				
+__________________________________________________________
+
+Product Deleted Successfully With Id : 1
+__________________________________________________________
+
+***************Product-Query-Service*******************
+__________________________________________________________
+GET	http://localhost:8082/api/products	SEND
+__________________________________________________________
+
+[
+    {
+        "productId": 1,
+        "productName": "Mobile",
+        "productPrice": 32000.0,
+        "productDescription": "MI Mobile"
+    },
+    {
+        "productId": 3,
+        "productName": "Ac",
+        "productPrice": 95000.0,
+        "productDescription": "Samsung Ac"
+    }
+]
+
+***************Product-Query-Service*******************
+__________________________________________________________
+GET	http://localhost:8082/api/products/1	SEND
+__________________________________________________________
+    {
+        "productId": 1,
+        "productName": "Mobile",
+        "productPrice": 32000.0,
+        "productDescription": "MI Mobile"
+    }
+__________________________________________________________
