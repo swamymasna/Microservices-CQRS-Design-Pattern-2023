@@ -1,3 +1,7 @@
+Note:
+*****
+=> Create New Tables, If we want to perform Both Command-Service & Query-Service Operations., otherwise will get NoSuchElementException
+
 Execution Steps:
 ================
 1. Start the Zookeeper & Kafka Servers
