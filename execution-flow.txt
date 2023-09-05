@@ -2,6 +2,25 @@ Note:
 *****
 => Create New Tables, If we want to perform Both Command-Service & Query-Service Operations., otherwise will get NoSuchElementException
 
+=> Both the Tables Primary Keys Must be Same as follows..!
+
+PRODUCT_CMD_TABLE::
++---------+-----------+-----------+---------------+
+| prod_id | prod_code | prod_cost | prod_desc     |
++---------+-----------+-----------+---------------+
+|       1 | LAPTOP    |     56000 | LENOVO-LAPTOP |
+|       2 | AC        |     56000 | LG-AC         |
++---------+-----------+-----------+---------------+
+
+PRODUCT_QUERY_TABLE::
++---------+-----------+-----------+---------------+
+| prod_id | prod_code | prod_cost | prod_desc     |
++---------+-----------+-----------+---------------+
+|       1 | LAPTOP    |     56000 | LENOVO-LAPTOP |
+|       2 | AC        |     56000 | LG-AC         |
++---------+-----------+-----------+---------------+
+
+
 Execution Steps:
 ================
 1. Start the Zookeeper & Kafka Servers
